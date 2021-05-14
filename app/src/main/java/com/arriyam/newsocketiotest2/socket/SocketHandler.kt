@@ -12,8 +12,8 @@ object SocketHandler {
     fun setSocket() {
         try {
 //            mSocket = IO.socket("http://10.0.2.2:3000")
-//            mSocket = IO.socket("http://192.168.86.60:3000")
-            mSocket = IO.socket("https://wateryoudrawing.herokuapp.com/")
+            mSocket = IO.socket("http://192.168.86.60:3000")
+//            mSocket = IO.socket("https://wateryoudrawing.herokuapp.com/")
         } catch (e: URISyntaxException) {
         }
     }

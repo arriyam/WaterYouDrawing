@@ -29,14 +29,14 @@ class UsernameActivity : AppCompatActivity() {
 //      Socket connection for this activity
         val nSocket= SocketHandler.getSocket();
 
-        nSocket.connect()
-        val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
-        val btnJoin = findViewById<Button>(R.id.buttonJoin)
         val textViewUserCount = findViewById<TextView>(R.id.textViewUserCount)
         val textViewTimer = findViewById<TextView>(R.id.textViewTimer)
         val textViewName= findViewById<TextView>(R.id.textViewName)
-        val textViewWelcome= findViewById<TextView>(R.id.textViewWelcome)
 
+
+
+//        Data from LoginActivity
+        val username = intent.getStringExtra("Username_Data")
 
 
 
@@ -108,29 +108,31 @@ class UsernameActivity : AppCompatActivity() {
             }
         }
 
-        btnJoin.setOnClickListener {
+        textViewName.text = "Hello, " + username
 
-            if (nSocket.connected()) {
-                val username=editTextUsername.text.toString()
-                if (username!="") {
-                    var bob = User(editTextUsername.text.toString(), 30, 1)
-
-                    nSocket.emit("join", bob)
-
-                    textViewWelcome.text="Please wait for others to join."
-                    editTextUsername.visibility = View.GONE
-                    btnJoin.visibility = View.GONE;
-                    textViewName.text = "Hello, " + bob.name
-                }
-                else{
-                    Toast.makeText(this,"Username can not be blank.", Toast.LENGTH_SHORT).show()
-                }
-
-            } else {
-                Toast.makeText(this, "Connection Failed", Toast.LENGTH_SHORT).show()
-            }
-
-        }
+//        btnJoin.setOnClickListener {
+//
+//            if (nSocket.connected()) {
+//                val username=editTextUsername.text.toString()
+//                if (username!="") {
+//                    var bob = User(editTextUsername.text.toString(), 30, 1)
+//
+//                    nSocket.emit("join", bob)
+//
+//                    textViewWelcome.text="Please wait for others to join."
+//                    editTextUsername.visibility = View.GONE
+//                    btnJoin.visibility = View.GONE;
+//                    textViewName.text = "Hello, " + bob.name
+//                }
+//                else{
+//                    Toast.makeText(this,"Username can not be blank.", Toast.LENGTH_SHORT).show()
+//                }
+//
+//            } else {
+//                Toast.makeText(this, "Connection Failed", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        }
 
     }
 

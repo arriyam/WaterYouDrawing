@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="com.arriyam.newsocketiotest2.RulesActivity"
             android:screenOrientation="landscape" />
+        <activity android:name="com.arriyam.newsocketiotest2.login.LoginActivity"
+            android:screenOrientation="landscape"/>
         <activity android:name="com.arriyam.newsocketiotest2.login.UsernameActivity"
             android:screenOrientation="landscape"/>
         <activity android:name="com.arriyam.newsocketiotest2.game.DrawingActivity"

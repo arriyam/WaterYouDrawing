@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.widget.Button
 import android.widget.Toast
+import com.arriyam.newsocketiotest2.login.LoginActivity
 import com.arriyam.newsocketiotest2.login.UsernameActivity
 import com.arriyam.newsocketiotest2.sketch.CanvasSize
 import com.arriyam.newsocketiotest2.socket.SocketHandler
@@ -17,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        Connecting to the socket using SocketHandler Object
-        SocketHandler.setSocket()
+
 
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
 
         btnSketch.setOnClickListener{
-            val intent= Intent(this, UsernameActivity::class.java)
+            val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
 
         }
