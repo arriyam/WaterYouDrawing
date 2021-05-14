@@ -65,7 +65,7 @@
             android:id="@+id/textViewWinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:text=""
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="textStart"
-            android:text="• Use your senses, when standing still you may be able to hear running water. Secondly, using your sight, track animal behaviour. Following animal tracks could lead to water. In the day following the flight path of birds has a high chance of bringing you to water."
+            android:text="• Use your senses, when standing still you may be able to hear running water. Secondly, using your sight, track animal behaviour. Following animal tracks could lead to water. In the day following the flight path of bird can help you find water."
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_margin="6dp"/>
     </LinearLayout>
