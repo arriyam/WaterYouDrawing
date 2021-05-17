@@ -1,15 +1,13 @@
 package com.arriyam.newsocketiotest2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.widget.Button
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.arriyam.newsocketiotest2.login.LoginActivity
-import com.arriyam.newsocketiotest2.login.UsernameActivity
 import com.arriyam.newsocketiotest2.sketch.CanvasSize
-import com.arriyam.newsocketiotest2.socket.SocketHandler
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         val btnSketch=findViewById<Button>(R.id.btnSketch)
         val btnRules=findViewById<Button>(R.id.btnRules)
 
+        val btnWebsite=findViewById<Button>(R.id.btnWebsite)
+
 
 
         btnSketch.setOnClickListener{
@@ -49,6 +49,13 @@ class MainActivity : AppCompatActivity() {
             val intent= Intent(this, RulesActivity::class.java)
             startActivity(intent)
 
+        }
+
+        btnWebsite.setOnClickListener{
+            val uri: Uri = Uri.parse("https://www.worldvision.ca/") // missing 'http://' will cause crashed
+
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
         }
     }
 

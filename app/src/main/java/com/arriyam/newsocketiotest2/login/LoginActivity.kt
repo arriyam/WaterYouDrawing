@@ -3,6 +3,7 @@ package com.arriyam.newsocketiotest2.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,6 +13,8 @@ import com.arriyam.newsocketiotest2.dataclass.User
 import com.arriyam.newsocketiotest2.socket.SocketHandler
 
 class LoginActivity: AppCompatActivity() {
+
+//    lateinit var listData:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -27,6 +30,16 @@ class LoginActivity: AppCompatActivity() {
         val btnJoin = findViewById<Button>(R.id.buttonJoin)
 
 
+//        nSocket.on("connectedPlayersA") { args ->
+//            if (args[0] != null) {
+//                val answer = args[0] as String
+//                runOnUiThread {
+//                    listData=answer
+//                }
+//            }
+//        }
+
+
         btnJoin.setOnClickListener {
 
             if (nSocket.connected()) {
@@ -36,6 +49,7 @@ class LoginActivity: AppCompatActivity() {
                     nSocket.emit("join", bob)
                     val intent= Intent(this, UsernameActivity::class.java)
                     intent.putExtra("Username_Data", username)
+//                    intent.putExtra("List_Data", listData)
                     startActivity(intent)
                 }
                 else{

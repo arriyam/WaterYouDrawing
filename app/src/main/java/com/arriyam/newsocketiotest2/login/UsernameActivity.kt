@@ -2,11 +2,9 @@ package com.arriyam.newsocketiotest2.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.arriyam.newsocketiotest2.R
 import com.arriyam.newsocketiotest2.socket.SocketHandler
@@ -21,6 +19,8 @@ class UsernameActivity : AppCompatActivity() {
     lateinit var team:String
     lateinit var answerServer:String
 
+//    private lateinit var listView:ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_username)
@@ -32,11 +32,31 @@ class UsernameActivity : AppCompatActivity() {
         val textViewUserCount = findViewById<TextView>(R.id.textViewUserCount)
         val textViewTimer = findViewById<TextView>(R.id.textViewTimer)
         val textViewName= findViewById<TextView>(R.id.textViewName)
+        val listView = findViewById<ListView>(R.id.list_displayed)
 
 
 
 //        Data from LoginActivity
         val username = intent.getStringExtra("Username_Data")
+//        val listData = intent.getStringExtra("List_Data")
+//        if (listData!=null){
+//            val listItems = listData.split(",").toTypedArray()
+//            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+//            listView.adapter = adapter
+//        }
+
+
+
+        nSocket.on("connectedPlayersA") { args ->
+            if (args[0] != null) {
+                val answer = args[0] as String
+                runOnUiThread {
+                    val listItems = answer.split(",").toTypedArray()
+                    val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems)
+                    listView.adapter = adapter
+                }
+            }
+        }
 
 
 
@@ -69,7 +89,7 @@ class UsernameActivity : AppCompatActivity() {
                         val intent= Intent(this, GuessingActivity::class.java)
                         intent.putExtra("Team_Data", team)
                         intent.putExtra("Answer_Data", answerServer)
-                        intent.putExtra("Points_Data", "Points: R: 0 B: 0 ")
+                        intent.putExtra("Points_Data", "Points: R: 0 B: 0  ")
 
                         startActivity(intent)
                     }
@@ -77,7 +97,7 @@ class UsernameActivity : AppCompatActivity() {
                         val intent= Intent(this, DrawingActivity::class.java)
                         intent.putExtra("Team_Data", team)
                         intent.putExtra("Answer_Data", answerServer)
-                        intent.putExtra("Points_Data", "Points: R: 0 B: 0 ")
+                        intent.putExtra("Points_Data", "Points: R: 0 B: 0  ")
                         startActivity(intent)
                     }
                 }
@@ -110,29 +130,6 @@ class UsernameActivity : AppCompatActivity() {
 
         textViewName.text = "Hello, " + username
 
-//        btnJoin.setOnClickListener {
-//
-//            if (nSocket.connected()) {
-//                val username=editTextUsername.text.toString()
-//                if (username!="") {
-//                    var bob = User(editTextUsername.text.toString(), 30, 1)
-//
-//                    nSocket.emit("join", bob)
-//
-//                    textViewWelcome.text="Please wait for others to join."
-//                    editTextUsername.visibility = View.GONE
-//                    btnJoin.visibility = View.GONE;
-//                    textViewName.text = "Hello, " + bob.name
-//                }
-//                else{
-//                    Toast.makeText(this,"Username can not be blank.", Toast.LENGTH_SHORT).show()
-//                }
-//
-//            } else {
-//                Toast.makeText(this, "Connection Failed", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        }
 
     }
 

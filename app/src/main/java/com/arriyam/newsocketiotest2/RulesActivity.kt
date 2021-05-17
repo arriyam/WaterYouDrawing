@@ -9,8 +9,8 @@ class RulesActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rules)
-        //      Socket connection for this activity
-        val nSocket= SocketHandler.getSocket();
+//        //      Socket connection for this activity
+//        val nSocket= SocketHandler.getSocket();
 
 
     }
